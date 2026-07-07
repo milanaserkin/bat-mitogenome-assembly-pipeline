@@ -43,3 +43,20 @@ Future improvements to this pipeline could include:
 * **Annotation:** Troubleshooting MitoZ to consistently mark circularity, or adding a secondary annotation tool to confirm outputs.
 * **Polishing:** Running Medaka after Racon to further resolve homopolymer errors typical in Nanopore data.
 * **Reproducibility:** Streamlining the individual bash scripts into an automated workflow manager (like Snakemake or Nextflow) to increase efficiency.
+
+---
+
+### Repository Structure
+
+├── scripts/
+│   └── Serkin_bat_mito_project.Rmd    # RMarkdown file containing the pipeline workflow and analysis
+├── figures/
+│   ├── circos.jpg                                  # Circular visualization of the assembled mitogenome
+│   ├── fastplong_QC_summary.png                    # Read quality control and trimming summary metrics
+│   ├── median_qual_histogram.png                   # Sequencing read quality score distribution histogram
+│   ├── mitochondrial_gene_annotation.png           # Functional mapping of the annotated mitochondrial genes
+│   ├── mitochondrial_genome_assembly_metrics.png   # Length, coverage, and sequence metrics of the final assembly
+│   ├── pipeline.png                                # Visual diagram of the complete assembly and analysis workflow
+│   └── species_summary_BLAST.png                   # BLAST hit counts, bit scores, and identity percentages for species ID
+├── Serkin_bat_mito_project.pdf        # Detailed project documentation and full report
+└── README.md                          # Project overview and repository guide
