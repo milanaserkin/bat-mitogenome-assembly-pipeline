@@ -48,6 +48,8 @@ Future improvements to this pipeline could include:
 
 ### Repository Structure
 
+```text
+
 ├── scripts/
 │   └── Serkin_bat_mito_project.Rmd    # RMarkdown file containing the pipeline workflow and analysis
 ├── figures/
