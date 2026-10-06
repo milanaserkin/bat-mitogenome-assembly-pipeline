@@ -23,11 +23,10 @@ process BLASTN_REMOTE {
     def outfmt   = params.blast_outfmt ?: '6 qseqid sseqid pident length mismatch gapopen evalue bitscore stitle'
     """
     # blastn cannot read gzipped queries directly; decompress if needed.
-    if [ "${assembly}" != "${assembly%.gz}" ]; then
-        gzip -dc ${assembly} > query.fasta
-    else
-        cp ${assembly} query.fasta
-    fi
+        case "${assembly}" in
+        *.gz) gzip -dc ${assembly} > query.fasta ;;
+        *)    cp ${assembly} query.fasta ;;
+    esac
 
     blastn \\
         -query query.fasta \\
