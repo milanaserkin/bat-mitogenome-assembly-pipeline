@@ -1,0 +1,2 @@
+sample,fastq,mito_reference
+bat869,/path/to/00_rawReads_bat869.fastq,/path/to/MN125184.1_mito.fasta
