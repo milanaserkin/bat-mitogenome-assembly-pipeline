@@ -1,0 +1,2 @@
+sample,fastq,mito_reference
+bat_test,/home/user/bat-mitogenome-assembly-pipeline/nextflow/assets/test/reads.fastq,/home/user/bat-mitogenome-assembly-pipeline/nextflow/assets/test/mito.fasta
