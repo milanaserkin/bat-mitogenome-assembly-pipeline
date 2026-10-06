@@ -25,8 +25,8 @@ workflow MITOGENOME_ASSEMBLY {
     ch_samples   // channel: [ val(meta), path(fastq), path(mito_reference) ]
 
     main:
-    ch_raw = ch_samples.map { meta, fastq, reference -> [ meta, fastq ] }
-    ch_ref = ch_samples.map { meta, fastq, reference -> [ meta, reference ] }
+    ch_raw = ch_samples.map { meta, fastq, _reference -> [ meta, fastq ] }
+    ch_ref = ch_samples.map { meta, _fastq, reference -> [ meta, reference ] }
 
     // 1. Adapter trimming (Porechop)
     PORECHOP_PORECHOP(ch_raw)
