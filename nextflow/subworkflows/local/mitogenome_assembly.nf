@@ -49,8 +49,8 @@ workflow MITOGENOME_ASSEMBLY {
     PAF_TO_READIDS(MINIMAP2_EXTRACT.out.paf)
     ch_extract = ch_clean.join(PAF_TO_READIDS.out.readids)
     SEQTK_SUBSEQ(
-        ch_extract.map { meta, clean, ids -> [ meta, clean ] },
-        ch_extract.map { meta, clean, ids -> ids }
+        ch_extract.map { meta, clean, _ids -> [ meta, clean ] },
+        ch_extract.map { _meta, _clean, ids -> ids }
     )
     ch_mito_reads = SEQTK_SUBSEQ.out.sequences
 
@@ -63,10 +63,10 @@ workflow MITOGENOME_ASSEMBLY {
 
     // 6. Collect the sweep per sample (drop the overlap key) and pick the best assembly
     ch_fa = FLYE.out.fasta
-        .map { meta, fasta -> [ meta.findAll { k, v -> k != 'overlap' }, fasta ] }
+         .map { meta, fasta -> [ meta.findAll { k, _v -> k != 'overlap' }, fasta ] }
         .groupTuple()
     ch_info = FLYE.out.txt
-        .map { meta, txt -> [ meta.findAll { k, v -> k != 'overlap' }, txt ] }
+         .map { meta, txt -> [ meta.findAll { k, _v -> k != 'overlap' }, txt ] }
         .groupTuple()
     SELECT_BEST_ASSEMBLY(ch_fa.join(ch_info))
 
